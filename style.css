@@ -1,0 +1,389 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-image: url(./img/img/bgimg.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+    overflow: hidden;
+}
+
+@font-face {
+    font-family: 'Zabars';
+    src: url('./fonts/Zabars.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'ModernoEspanol';
+    src: url('./fonts/Moderno pero Espanol.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+canvas {
+    background-color: black;
+    display: block;
+}
+
+h1 {
+    font-size: 64px;
+    letter-spacing: 3px;
+    text-shadow: 1px 1px 12px #d27a07;
+    font-family: 'Zabars', Arial, Helvetica, sans-serif;
+}
+
+h2 {
+    font-size: 64px;
+}
+
+
+.d-none {
+    display: none;
+}
+
+.flex {
+    display: flex;
+}
+
+.gameOverScreen {
+    background-image: url("./img/img/9_intro_outro_screens/game_over/oh\ no\ you\ lost!.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 421px;
+    width: 720px;
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: end;
+    flex-direction: column;
+    border: 2px solid black;
+    border-radius: 8px;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.gamescreen {
+    display: block;
+}
+
+#fullscreen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-height: 480px !important;
+
+}
+
+.continueBtn {
+    color: #d27a07;
+    margin: 10px;
+    font-family: 'ModernoEspanol';
+    font-size: 40px;
+    width: 175px;
+    font-weight: 500;
+    background-color: black;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.mainMenuBtn {
+    color: #d27a07;
+    margin: 10px;
+    font-family: 'ModernoEspanol';
+    font-size: 40px;
+    width: 175px;
+    font-weight: 500;
+    background-color: black;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.continueBtn:hover,
+.mainMenuBtn:hover {
+    transform: scale(1.02);
+    box-shadow: 4px 4px 20px #d27a07;
+}
+
+h3 {
+    font-size: 60px;
+    color: rgb(244, 24, 35);
+}
+
+.winningScreen {
+    background-image: url("./img/img/9_intro_outro_screens/win/win_1.png");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    align-items: end;
+    height: 421px;
+    width: 720px;
+    border: 2px solid black;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.playAgainBtn {
+    color: #d27a07;
+    margin: 10px;
+    font-family: 'ModernoEspanol';
+    font-size: 40px;
+    width: 175px;
+    font-weight: 500;
+    background-color: black;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.winMainMenuBtn {
+    color: #d27a07;
+    margin: 10px;
+    font-family: 'ModernoEspanol';
+    font-size: 40px;
+    width: 175px;
+    font-weight: 500;
+    background-color: black;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.playAgainBtn:hover,
+.winMainMenuBtn:hover {
+    transform: scale(1.02);
+    box-shadow: 4px 4px 20px #d27a07;
+}
+
+.startScreen {
+
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    height: 575px;
+    width: 720px;
+
+}
+
+.wrapper {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column-reverse;
+}
+
+.ImgDiv {
+    background-image: url(./img/img/9_intro_outro_screens/start/startscreen_1.png);
+    height: 400px;
+    width: 720px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 8px;
+    border: 2px solid black;
+    box-shadow: 4px 4px 20px black;
+}
+
+.ImgDiv img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+.startGameBtn {
+    font-family: 'ModernoEspanol';
+    color: #d27a07;
+    justify-content: center;
+    font-size: 45px;
+    width: 220px;
+    height: 50px;
+    margin-bottom: 16px;
+    background-color: black;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.startGameBtn:hover {
+    transform: scale(1.02);
+    box-shadow: 4px 4px 20px #d27a07;
+  }
+
+.touchControl {
+    height: 200px;
+    display: none;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    border: 1px solid black;
+    box-shadow: 4px 4px 20px black;
+    border-radius: 8px;
+    margin: 16px;
+    background-color: whitesmoke;
+    padding: 8px;
+}
+
+.touchIcon {
+    height: 40px;
+    width: 40px;
+    cursor: pointer;
+}
+
+.left {
+    left: 25px;
+}
+
+.orientationWarning {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 1);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 44px;
+    z-index: 9999;
+    display: none;
+}
+
+.orientationWarning p {
+    padding: 40px;
+}
+
+footer {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    width: 720px;
+    height: 50px;
+    margin: 8px;
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.footerIcons {
+    background-color: sandybrown;
+    padding: 10px;
+    border-radius: 50%;
+    height: 32px;
+    width: 32px;
+    display: flex;
+    cursor: pointer;
+    border: 2px solid black;
+    box-shadow: 4px 4px 20px black;
+    display: flex;
+    justify-content: center;
+}
+
+.footerIcons:hover {
+    transform: scale(1.02);
+}
+
+.instruction {
+    font-family: 'ModernoEspanol';
+    margin-top: 81px;
+    display: none;
+    justify-content: space-around;
+    height: 400px;
+    width: 720px;
+    background-color: rgba(0, 0, 0, 0.8);
+    box-shadow: 4px 4px 20px black;
+    border-radius: 8px;
+    color: silver;
+}
+
+.buttonDiv {
+    margin-top: 10px;
+}
+
+.closeBtn {
+    font-size: 20px;
+    border-radius: 50%;
+    font-weight: bold;
+    background-color: black;
+    height: 34px;
+    width: 34px;
+    cursor: pointer;
+    color: silver;
+    box-shadow: 4px 4px 20px white;
+}
+
+.closeBtn:hover {
+    transform: scale(1.05);
+}
+
+.instructionDetails {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.instructionDetails p {
+    margin: 0px;
+    font-size: 28px;
+}
+
+.policy {
+    margin-bottom: 30px;
+    margin-top: 81px;
+    color: silver;
+    display: none;
+    justify-content: center;
+    font-size: 24px;
+    overflow-y: auto;
+    padding: 16px;
+    height: 400px;
+    width: 720px;
+    background-color: rgba(0, 0, 0, 0.8);
+    box-shadow: 4px 4px 20px black;
+    border-radius: 8px;
+}
+
+h4 {
+    font-size: 40px;
+}
+
+.closePolicy {
+    display: flex;
+    justify-content: flex-end;
+}
+
+
+::-webkit-scrollbar {
+    width: 10px;
+    background-color: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 5px;
+    border: 2px solid black;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+::-webkit-scrollbar-track {
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 1px;
+}
+
+#impressum::-webkit-scrollbar {
+    width: 10px;
+}
+
+#impressum::-webkit-scrollbar-thumb {
+    background-color: silver;
+}

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="./img/img/4_enemie_boss_chicken/3_attack/G13.png">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./responsive.css">
+    
+    <script src="./models/drawable-object.class.js"></script>
+    <script src="./models/movable-object.class.js"></script>
+    <script src="./models/character.class.js"></script>
+    <script src="./models/chicken.class.js"></script>
+    <script src="./models/chicken-small.class.js"></script>
+    <script src="./models/cloud.class.js"></script>
+    <script src="./models/background-object.class.js"></script>
+    <script src="./models/status-bar.class.js"></script>
+    <script src="./models/status-bar-bottle.class.js"></script>
+    <script src="./models/status-bar-coins.class.js"></script>
+    <script src="./models/status-bar-endboss.class.js"></script>
+    <script src="./models/world.class.js"></script>
+    <script src="./models/coins.class.js"></script>
+    <script src="./models/bottle.class.js"></script>
+    <script src="./models/level.class.js"></script>
+    <script src="./models/throwable-object.class.js"></script>
+    <script src="./models/endboss.class.js"></script>
+    <script src="./levels/level1.js"></script>
+    <script src="./models/keyboard.class.js"></script>
+    <script src="./js/game.js"></script>
+    <script src="./js/script.js"></script>
+    <title>El Pollo Loco</title>
+</head>
+
+<body onload="initBody()">
+    <h1>El Pollo Loco</h1>
+
+    <div id="fullscreen">
+
+            <div id="mobilecontrolLeft" class="touchControl">
+                <img id="jumpbtn" class="touchIcon" src="./img/space.png">
+                <img id="leftbtn" class="touchIcon" src="./img/leftarrow.png">
+            </div>
+
+
+        <div id="gameover" class="gameOverScreen" style="display: none;">
+            <div>
+                <button onclick="restartGame()" class="continueBtn">Continue</button>
+                <button onclick="goToStartMenu()" class="mainMenuBtn">Main Menu</button>
+            </div>
+        </div>
+
+        <div id="win" class="winningScreen" style="display: none;">
+                <div>
+                    <button onclick="restartGame()" class="playAgainBtn">Play Again</button>
+                    <button onclick="goToStartMenu()" class="winMainMenuBtn">Main Menu</button>
+                </div>
+        </div>
+
+        <div id="startscreen" class="startScreen" style="display: flex;">
+            <div class="wrapper">
+                <div class="ImgDiv"></div>
+                <button onclick="startGame()" class="startGameBtn">Start Game</button>
+            </div>
+
+
+        </div>
+
+        <canvas id="canvas" width="720px" height="480px" style="display: none;"></canvas>
+
+        <div id="instructionid" class="instruction">
+            <div class="instructionDetails">
+                <p>move left = left arrow</p>
+                <p>move right = right arrow</p>
+                <p>Jump = space</p>
+                <p>throw bottle = D</p>
+            </div>
+            <div class="buttonDiv"> <button onclick="hideInstructions()" class="closeBtn">X</button></div>
+        </div>
+
+        <div id="impressum" class="policy">
+            <div class="closePolicy"> <button onclick="hidepolicy()" class="closeBtn">X</button></div>
+            <h4>Impressum</h4>
+            <p>
+                Serhat Kalin <br>
+                Karl-Fischer-Weg 2 <br>
+                12169 Berlin
+            </p><br>
+            <strong>Kontakt</strong>
+            <p>
+                Telefon: 0176 / 31485837 <br>
+                Email: kalinserhat@gmx.de <br>
+                Quelle: <a href="https://www.e-recht24.de/">www.e-recht24.de</a>
+            </p>
+        </div>
+
+
+
+        <div id="orientationWarning" class="orientationWarning">
+            <p>rotate your device</p>
+        </div>
+
+        <div id="mobilecontrolRight" class="touchControl">
+            <img id="throwbtn" class="touchIcon" src="./img/d.png">
+            <img id="rightbtn" class="touchIcon" src="./img/rightarrow.png">
+        </div>
+    </div>
+
+    <footer id="footerid">
+        <div id="instructionBtn" onclick="showInstructions()" class="footerIcons">
+            <img src="./img/helpbtn.png">
+        </div>
+        <div id="policyid" onclick="showpolicy()" class="footerIcons">
+            <img src="./img/info.png">
+        </div>
+        <div class="footerIcons">
+            <img id="soundid" onclick="mute()" src="./img/soundon.png">
+        </div>
+    </footer>
+</body>
+
+</html>

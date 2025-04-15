@@ -1,0 +1,242 @@
+@media (max-width: 1023px) and (orientation: landscape) {
+    
+    .touchControl{
+        display: flex !important;
+    }
+
+    h1 {
+        margin: 4px;
+        font-size: 24px;
+        margin-top: 50px;
+        font-size: 50px;
+    }
+
+    #canvas {
+
+        width: 54vw !important;
+    }
+
+    .gamescreen {
+        height: 64vh;
+        width: 56vw;
+    }
+
+    .startScreen {
+        height: 64vh;
+    }
+
+    .ImgDiv {
+        background-image: url(./img/img/9_intro_outro_screens/start/startscreen_1.png);
+        height: 400px;
+        width: 720px;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        border-radius: 8px;
+        border: 2px solid black;
+        box-shadow: 4px 4px 20px black;
+    }
+
+    #footerid {
+        border-radius: 16px;
+        margin: 8px;
+        height: 40px;
+        margin-top: 20px;
+        display: flex;
+        justify-content: end;
+        align-items: center;
+    }
+
+    .startGameBtn {
+        font-size: 34px;
+        width: 150px;
+        height: 40px;
+        margin-top: 18px;
+        font-family: 'ModernoEspanol';
+        background-color: black;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+    }
+
+    .instruction {
+        height: 386px;
+        width: 720px;
+    }
+
+    .instructionDetails p {
+        font-size: 28px;
+    }
+
+    .touchIcon {
+        height: 30px;
+        width: 30px;
+    }
+
+    .closeBtn {
+        font-size: 20px;
+        border-radius: 50%;
+        font-weight: bold;
+        background-color: black;
+        height: 32px;
+        width: 32px;
+        cursor: pointer;
+        color: silver;
+        box-shadow: 4px 4px 20px white;
+    }
+
+    .policy {
+        display: none;
+        justify-content: center;
+        font-family: "AbrilFatface-Regular";
+        font-size: 16px;
+        overflow-y: auto;
+        padding: 16px;
+        height: 324px;
+        width: 720px;
+        background-color: rgba(0, 0, 0, 0.8);
+        color: silver;
+    }
+
+    h4 {
+        margin: 0;
+    }
+
+    .gameoverscreen {
+        height: 64vh !important;
+        width: 56vw;
+    }
+
+    .continueBtn {
+        color: #d27a07;
+        margin: 5px;
+        font-family: 'ModernoEspanol';
+        font-size: 32px;
+        font-weight: 500;
+        width: 120px;
+        background-color: black;
+        border-radius: 8px;
+        cursor: pointer;
+    }
+
+    .mainMenuBtn {
+        color: #d27a07;
+        margin: 5px;
+        font-family: 'ModernoEspanol';
+        font-size: 32px;
+        width: 120px;
+        font-weight: 500;
+        background-color: black;
+        border-radius: 8px;
+        cursor: pointer;
+    }
+
+    h2 {
+        font-size: 32px;
+    }
+
+    .winningScreen {
+        height: 64vh !important;
+        width: 56vw;
+    }
+
+    h3 {
+        font-size: 30px;
+        margin: 0;
+    }
+
+    .playAgainBtn {
+        color: #d27a07;
+        margin: 10px;
+        font-family: 'ModernoEspanol';
+        font-size: 32px;
+        width: 120px;
+        background-color: black;
+        border-radius: 8px;
+    }
+
+    .winMainMenuBtn {
+        color: #d27a07;
+        margin: 10px;
+        font-family: 'ModernoEspanol';
+        font-size: 32px;
+        width: 120px;
+        background-color: black;
+        border-radius: 8px;
+    }
+
+
+}
+
+@media (max-width: 860px) {
+
+    .startScreen {
+        height: 64vh;
+        width: 80vw;
+    }
+
+    .ImgDiv {
+        background-image: url(./img/img/9_intro_outro_screens/start/startscreen_1.png);
+        height: 340px;
+        width: 600px;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        border-radius: 8px;
+        border: 2px solid black;
+        box-shadow: 4px 4px 20px black;
+    }
+
+    #footerid {
+        width: 600px;
+        border-radius: 16px;
+        margin: 8px;
+        height: 40px;
+        margin-top: 5px;
+        display: flex;
+        justify-content: end;
+        align-items: center;
+    }
+
+    .policy {
+        display: none;
+        justify-content: center;
+        font-family: "AbrilFatface-Regular";
+        font-size: 16px;
+        overflow-y: auto;
+        padding: 16px;
+        height: 324px;
+        width: 560px;
+        background-color: rgba(0, 0, 0, 0.8);
+        color: silver;
+    }
+
+    .instruction {
+        margin-top: 81px;
+        display: none;
+        justify-content: space-around;
+        height: 386px;
+        width: 588px;
+        background-color: rgba(0, 0, 0, 0.8);
+        box-shadow: 4px 4px 20px black;
+        border-radius: 8px;
+        color: silver;
+    }
+}
+
+@media (orientation: portrait) {
+    .orientationWarning {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100% !important;
+        height: 100%;
+
+    }
+}
+
+@media only screen and (min-device-width: 1024px) and (max-device-width: 1366px) and (orientation: landscape) {
+    .touchControl {
+        display: flex;
+    }
+}

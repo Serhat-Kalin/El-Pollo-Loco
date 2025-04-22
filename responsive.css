@@ -74,15 +74,14 @@
     }
 
     .closeBtn {
-        font-size: 20px;
+        font-size: 16px;
         border-radius: 50%;
         font-weight: bold;
-        background-color: black;
-        height: 32px;
-        width: 32px;
+        background-color: sandybrown;
+        height: 26px;
+        width: 26px;
         cursor: pointer;
-        color: silver;
-        box-shadow: 4px 4px 20px white;
+        color: black;
     }
 
     .policy {
@@ -168,7 +167,7 @@
 
 }
 
-@media (max-width: 860px) {
+@media (max-width: 886px) {
 
     .startScreen {
         height: 64vh;

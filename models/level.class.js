@@ -7,13 +7,8 @@ class Level {
     level_end_x = 2900;
   
     /**
-     * Initializes a new Level.
-     *
-     * @param {Array} enemies
-     * @param {Array} clouds
-     * @param {Array} backgroundObjects
-     * @param {Array} coins
-     * @param {Array} bottles
+     * Creates a new level with the given game objects.
+     * Sets up enemies, clouds, background visuals, coins, and bottles.
      */
     constructor(enemies, clouds, backgroundObjects, coins, bottles) {
       this.enemies = enemies;

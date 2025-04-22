@@ -8,8 +8,10 @@ class Character extends MovableObject {
     amountOfCoins = 0;
     amountOfBottle = 0;
     pepe_snore = new Audio("audio/snore.mp3");
-    loosingsound = new Audio("audio/losemusic.mp3");
+    loosingsound = new Audio("audio/loosing.mp3");
     walking_sound = new Audio("audio/walking.mp3");
+    jump_sound = new Audio("audio/jump.mp3");
+
   
     IMAGES_WALKING = [
       "img/img/2_character_pepe/2_walk/W-21.png",
@@ -82,10 +84,8 @@ class Character extends MovableObject {
     };
   
     /**
-     * Initializes the Character instance by loading images for various states
-     * such as walking, jumping, dead, hurt, idle, and sleep. It also applies
-     * gravity and starts animations for the character. Additionally, it sets
-     * the character to idle and long idle modes.
+     * Initializes the character with default image and loads all animation frames.
+     * Applies gravity and starts idle and movement animations.
      */
     constructor() {
       super().loadImage("img/img/2_character_pepe/2_walk/W-21.png");
@@ -99,27 +99,23 @@ class Character extends MovableObject {
       this.animate();
       this.pepeIdleModus();
       this.pepeLongIdle();
-    }
+  }
   
     /**
-     * Handles the animations and movement of the character.
-     * 
-     * Animations are handled every 100 ms, and the movement is handled
-     * every 60 frames per second.
+     * Starts animation loops for movement and state-based animations.
      */
     animate() {
       setInterval(() => {
-        this.handleMovement();
-      }, 1000 / 60);
-  
+          this.handleMovement();
+      }, 1000 / 60); // ~60 FPS
+
       setInterval(() => {
-        this.handleAnimations();
-      }, 100);
-    }
+          this.handleAnimations();
+      }, 100); // update animations
+  }
   
     /**
-     * Handles movement input and updates character position accordingly.
-     * Also updates camera position to follow the character.
+     * Handles character movement based on keyboard input.
      */
     handleMovement() {
       this.walking_sound.pause();
@@ -127,199 +123,168 @@ class Character extends MovableObject {
       this.handleMoveLeft();
       this.handleJump();
       this.world.camera_x = -this.x + 100;
-    }
+  }
   
-  /** Handles all animation types (dead, hurt, jump, walk) */
+    /**
+     * Handles switching between animation states.
+     */
     handleAnimations() {
       this.handleDeadAnimation();
       this.handleHurtAnimation();
       this.handleJumpAnimation();
       this.handleWalkingAnimation();
-    }
+  }
   
     /**
-     * Moves character to the right if the right key is pressed and within level bounds.
+     * Moves the character to the right if possible.
      */
     handleMoveRight() {
       if (this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x) {
-        this.moveRight();
-        this.otherDirection = false;
-        this.walking_sound.play();
-        this.pepe_snore.pause();
+          this.moveRight();
+          this.otherDirection = false;
+          this.walking_sound.play();
+          this.pepe_snore.pause();
       }
-    }
+  }
   
     /**
-     * Moves character to the left if the left key is pressed and within level bounds.
+     * Moves the character to the left if possible.
      */
     handleMoveLeft() {
       if (this.world.keyboard.LEFT && this.x > 0) {
-        this.moveLeft();
-        this.otherDirection = true;
-        this.walking_sound.play();
-        this.pepe_snore.pause();
+          this.moveLeft();
+          this.otherDirection = true;
+          this.walking_sound.play();
+          this.pepe_snore.pause();
       }
-    }
+  }
   
     /**
-     * Handles the character's jumping.
-     * 
-     * This function checks if the space key is pressed and the character is
-     * not above the ground. If true, it makes the character jump and pauses
-     * the snore sound.
+     * Makes the character jump if on the ground.
      */
     handleJump() {
       if (this.world.keyboard.SPACE && !this.isAboveGround()) {
-        this.jump();
-        this.pepe_snore.pause();
+          this.jump();
+          this.pepe_snore.pause();
+          this.jump_sound.play();
       }
-    }
+  }
   
     /**
-     * Handles the character's death animation.
-     * 
-     * This function checks if the character is dead and if true, plays the
-     * death animation and calls the function pepeIsDead.
+     * Plays dead animation and triggers game over.
      */
     handleDeadAnimation() {
       if (this.isDead()) {
-        this.playAnimation(this.IMAGES_DEAD);
-        this.pepeIsDead();
+          this.playAnimation(this.IMAGES_DEAD);
+          this.pepeIsDead();
       }
-    }
+  }
   
     /**
-     * Handles the character's hurt animation.
-     * 
-     * This function checks if the character is hurt and if true, plays the
-     * hurt animation.
+     * Plays hurt animation when damaged.
      */
     handleHurtAnimation() {
       if (this.isHurt()) {
-        this.playAnimation(this.IMAGES_HURT);
+          this.playAnimation(this.IMAGES_HURT);
       }
-    }
+  }
   
     /**
-     * Handles the character's jumping animation.
-     * 
-     * This function checks if the character is above the ground and if true,
-     * plays the jumping animation. If the character is not above the ground,
-     * it sets the jumping animation to false.
+     * Plays jump animation while the character is in the air.
      */
     handleJumpAnimation() {
       if (this.isAboveGround()) {
-        if (!this.isJumping) {
-          this.isJumping = true;
-        }
-        this.playOnce(this.IMAGES_JUMPING, 1800);
+          if (!this.isJumping) {
+              this.isJumping = true;
+          }
+          this.playOnce(this.IMAGES_JUMPING, 1800);
       } else {
-        this.isJumping = false;
+          this.isJumping = false;
       }
-    }
+  }
   
     /**
-     * Handles the character's walking animation.
-     * 
-     * This function checks if the character is not above the ground and if the
-     * left or right arrow key is pressed. If true, it plays the walking
-     * animation.
+     * Plays walking animation when moving on the ground.
      */
     handleWalkingAnimation() {
       if (!this.isAboveGround() && (this.world.keyboard.RIGHT || this.world.keyboard.LEFT)) {
-        this.playAnimation(this.IMAGES_WALKING);
+          this.playAnimation(this.IMAGES_WALKING);
       }
-    }
+  }
   
     /**
-     * Makes the character jump by setting the vertical speed and jump state.
-     * 
-     * This function sets the character's vertical speed to initiate a jump and
-     * marks the character as currently jumping.
+     * Triggers jump movement and sets state.
      */
     jump() {
       this.speedY = 25;
       this.isJumping = true;
-    }
+  }
   
     /**
-     * Kills an enemy that the character jumps on.
-     * 
-     * This function takes an enemy object as a parameter and calls the die
-     * method on it to kill it.
-     * @param {Enemy} enemy The enemy object to be killed.
+     * Defeats an enemy when jumping on it.
+     * @param {Enemy} enemy - The enemy to defeat.
      */
     jumpOn(enemy) {
       enemy.die();
-    }
+  }
   
     /**
-     * Plays the idle animation if the character has not moved for 3 seconds.
-     * 
-     * This function uses an interval to check if the character has not moved for
-     * 3 seconds (3000 milliseconds). If true, the idle animation is played.
+     * Plays idle animation after a short period of no user input.
      */
     pepeIdleModus() {
       setInterval(() => {
-        let timeSinceLastAction = new Date().getTime() - this.lastActionTime;
-        if (timeSinceLastAction > 3000) {
-          this.playAnimation(this.IMAGES_IDLE);
-        }
+          let timeSinceLastAction = new Date().getTime() - this.lastActionTime;
+          if (timeSinceLastAction > 3000) {
+              this.playAnimation(this.IMAGES_IDLE);
+          }
       }, 400);
-    }
+  }
   
     /**
-     * Plays the long idle animation if the character has not moved for 6 seconds.
-     * 
-     * This function uses an interval to check if the character has not moved for
-     * 6 seconds (6000 milliseconds). If true, the sleep animation is played and
-     * the snore sound is activated.
+     * Plays long idle (sleeping) animation after extended inactivity.
      */
     pepeLongIdle() {
       setInterval(() => {
-        let timeSinceLastAction = new Date().getTime() - this.lastActionTime;
-        if (timeSinceLastAction > 6000) {
-          this.playAnimation(this.IMAGES_SLEEP);
-          this.pepe_snore.play();
-        }
+          let timeSinceLastAction = new Date().getTime() - this.lastActionTime;
+          if (timeSinceLastAction > 6000) {
+              this.playAnimation(this.IMAGES_SLEEP);
+              this.pepe_snore.play();
+          }
       }, 400);
-    }
+  }
   
     /**
-     * Increases the amount of coins the character has by 10.
-     * If the amount of coins exceeds 100, it is capped at 100.
+     * Increases coin counter when collecting a coin.
+     * Caps at 100.
      */
     collectCoin() {
       this.amountOfCoins += 20;
       if (this.amountOfCoins > 100) {
-        this.amountOfCoins = 100;
+          this.amountOfCoins = 100;
       }
-    }
+  }
   
     /**
-     * Increases the amount of bottles the character has by 10.
-     * If the amount of bottles exceeds 100, it is capped at 100.
+     * Increases bottle counter when collecting a bottle.
+     * Caps at 100.
      */
     collectBottle() {
       this.amountOfBottle += 1;
       if (this.amountOfBottle > 100) {
-        this.amountOfBottle = 100;
+          this.amountOfBottle = 100;
       }
-    }
+  }
   
     /**
-     * Handles the character's death.
-     * 
-     * This function checks if the character's energy is 0 and if true, plays the
-     * losing sound and calls the gameOver function after 1.5 seconds.
+     * Handles what happens when the character dies (e.g. lose sound, game over).
      */
     pepeIsDead() {
       if (this.energy == 0) {
-        this.loosingsound.play();
-        setTimeout(() => {
-          gameOver();
-        }, 1500);
+          this.loosingsound.play();
+          setTimeout(() => {
+              gameOver();
+          }, 1500);
       }
-    }
   }
+}
   

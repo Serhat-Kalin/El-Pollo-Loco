@@ -23,8 +23,8 @@ class Chick extends MovableObject {
     };
 
     /**
-     * @description Creates a Chick object and sets it to move and animate, sets random x position and speed
-     * @param {none}
+     * Creates a small chick enemy, randomly places it, sets speed,
+     * loads animations and starts its movement.
      */
     constructor() {
         super().loadImage("img/img/3_enemies_chicken/chicken_small/1_walk/1_w.png");
@@ -32,28 +32,27 @@ class Chick extends MovableObject {
         this.loadImages(this.IMAGES_DEAD);
         this.x = 700 + Math.random() * 500;
         this.speed = 0.8 * Math.random() * 0.5;
-        this.move()
+        this.move();
         this.animate();
         this.isDead = false;
     }
 
     /**
-     * @description Animates the Chick by playing the walk animation if alive, dead animation if dead
-     * @param {none}
+     * Switches between walking and dead animations based on chick's state.
      */
     animate() {
         setInterval(() => {
-          if(!this.isDead){
-            this.playAnimation(this.IMAGES_WALKING);
-          }else {
-            this.playAnimation(this.IMAGES_DEAD);
-          }
+            if (!this.isDead) {
+                this.playAnimation(this.IMAGES_WALKING);
+            } else {
+                this.playAnimation(this.IMAGES_DEAD);
+            }
         }, 200);
-      }
+    }
 
     /**
-     * @description Reduces health by given amount, if health falls to 0, calls die()
-     * @param {number} amount - amount of health to reduce
+     * Reduces health by given amount and checks if chick should die.
+     * @param {number} amount - How much health to subtract.
      */
     takeDamage(amount) {
         this.health = Math.max(0, this.health - amount);
@@ -63,8 +62,8 @@ class Chick extends MovableObject {
     }
 
     /**
-     * @description Sets isDead to true, stops movement, plays die sound, changes image to dead image, and moves off screen
-     * @param {none}
+     * Handles chick's death logic: stops it, plays sound,
+     * shows dead image and removes it after delay.
      */
     die() {
         if (this.isDead) return;
@@ -74,7 +73,7 @@ class Chick extends MovableObject {
         this.img = this.imageCache[this.IMAGES_DEAD[0]];
 
         setTimeout(() => {
-            this.y = -1000;
+            this.y = -1000; // move it off screen
         }, 1000);
     }
 }

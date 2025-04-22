@@ -13,8 +13,7 @@ class Bottlebar extends DrawableObject {
   percentage = 0;
 
   /**
-   * Initializes the bottle bar by loading its images and setting its
-   * starting position, size, and percentage.
+   * Initializes the bottle bar with images and position.
    */
   constructor() {
     super();
@@ -27,12 +26,7 @@ class Bottlebar extends DrawableObject {
   }
 
   /**
-   * Shakes the bottle bar by moving it left and right, and plays the
-   * empty bottle sound effect.
-   * 
-   * @description Shakes the bottle bar by moving it left and right, and plays the
-   * empty bottle sound effect.
-   * @param {none}
+   * Creates a short left-right shake animation with sound.
    */
   shake() {
     const originalX = this.x;
@@ -44,23 +38,17 @@ class Bottlebar extends DrawableObject {
   }
 
   /**
-   * Sets the percentage of the bottle bar and updates its image.
-   * 
-   * @description Sets the percentage of the bottle bar and updates its image.
-   * @param {number} percentage - the new percentage of the bottle bar
-   */ 
+   * Updates the bottle bar to reflect the given percentage.
+   */
   setPercantage(percentage) {
     this.percentage = percentage;
     let path = this.IMAGES[this.resolveImageIndex()];
     this.img = this.imageCache[path];
   }
 
-/**
- * Determines the index of the image to display based on the current percentage.
- * 
- * @returns {number} The index of the image corresponding to the current percentage.
- * The index ranges from 0 to 5, where 0 represents 0 to 19 percent, and 5 represents 100 percent.
- */
+  /**
+   * Determines which image to display based on percentage.
+   */
   resolveImageIndex() {
     if (this.percentage == 100) {
       return 5;

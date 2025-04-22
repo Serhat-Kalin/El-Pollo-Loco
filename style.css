@@ -2,7 +2,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-image: url(./img/img/bgimg.png);
+    background-image: url(./img/img/backgroundIMG.png);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -52,7 +52,7 @@ h2 {
 }
 
 .gameOverScreen {
-    background-image: url("./img/img/9_intro_outro_screens/game_over/oh\ no\ you\ lost!.png");
+    background-image: url("./img/img/youLoseIMG.png");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -107,7 +107,8 @@ h2 {
 .continueBtn:hover,
 .mainMenuBtn:hover {
     transform: scale(1.02);
-    box-shadow: 4px 4px 20px #d27a07;
+    box-shadow: 4px 4px 20px sandybrown;
+    color: navajowhite;
 }
 
 h3 {
@@ -116,7 +117,7 @@ h3 {
 }
 
 .winningScreen {
-    background-image: url("./img/img/9_intro_outro_screens/win/win_1.png");
+    background-image: url("./img/img/youWinIMG.png");
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
@@ -157,7 +158,8 @@ h3 {
 .playAgainBtn:hover,
 .winMainMenuBtn:hover {
     transform: scale(1.02);
-    box-shadow: 4px 4px 20px #d27a07;
+    box-shadow: 4px 4px 20px sandybrown;
+    color: navajowhite;
 }
 
 .startScreen {
@@ -213,7 +215,8 @@ h3 {
 
 .startGameBtn:hover {
     transform: scale(1.02);
-    box-shadow: 4px 4px 20px #d27a07;
+    box-shadow: 4px 4px 20px sandybrown;
+    color: navajowhite;
   }
 
 .touchControl {
@@ -222,11 +225,10 @@ h3 {
     justify-content: space-around;
     align-items: center;
     flex-direction: column;
-    border: 1px solid black;
-    box-shadow: 4px 4px 20px black;
+    box-shadow: 4px 4px 20px sandybrown;
     border-radius: 8px;
     margin: 16px;
-    background-color: whitesmoke;
+    background-color: navajowhite;
     padding: 8px;
 }
 
@@ -288,6 +290,8 @@ footer {
 
 .footerIcons:hover {
     transform: scale(1.02);
+    box-shadow: 4px 4px 20px sandybrown;
+    background-color: navajowhite;
 }
 
 .instruction {
@@ -308,19 +312,20 @@ footer {
 }
 
 .closeBtn {
-    font-size: 20px;
+    font-size: 16px;
     border-radius: 50%;
     font-weight: bold;
-    background-color: black;
-    height: 34px;
-    width: 34px;
+    background-color: sandybrown;
+    height: 28px;
+    width: 28px;
     cursor: pointer;
-    color: silver;
-    box-shadow: 4px 4px 20px white;
+    color: black;
 }
 
 .closeBtn:hover {
     transform: scale(1.05);
+    box-shadow: 4px 4px 20px sandybrown;
+    color: navajowhite;
 }
 
 .instructionDetails {

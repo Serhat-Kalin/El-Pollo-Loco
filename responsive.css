@@ -4,13 +4,6 @@
         display: flex !important;
     }
 
-    h1 {
-        margin: 4px;
-        font-size: 24px;
-        margin-top: 50px;
-        font-size: 50px;
-    }
-
     #canvas {
 
         width: 54vw !important;
@@ -25,18 +18,6 @@
         height: 64vh;
     }
 
-    .ImgDiv {
-        background-image: url(./img/img/9_intro_outro_screens/start/startscreen_1.png);
-        height: 400px;
-        width: 720px;
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-        border-radius: 8px;
-        border: 2px solid black;
-        box-shadow: 4px 4px 20px black;
-    }
-
     #footerid {
         border-radius: 16px;
         margin: 8px;
@@ -49,7 +30,7 @@
 
     .startGameBtn {
         font-size: 34px;
-        width: 150px;
+        width: 177px;
         height: 40px;
         margin-top: 18px;
         font-family: 'ModernoEspanol';
@@ -57,6 +38,7 @@
         border: none;
         border-radius: 8px;
         cursor: pointer;
+        margin-top: 80px;
     }
 
     .instruction {
@@ -130,10 +112,6 @@
         cursor: pointer;
     }
 
-    h2 {
-        font-size: 32px;
-    }
-
     .winningScreen {
         height: 64vh !important;
         width: 56vw;
@@ -172,18 +150,6 @@
     .startScreen {
         height: 64vh;
         width: 80vw;
-    }
-
-    .ImgDiv {
-        background-image: url(./img/img/9_intro_outro_screens/start/startscreen_1.png);
-        height: 340px;
-        width: 600px;
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-        border-radius: 8px;
-        border: 2px solid black;
-        box-shadow: 4px 4px 20px black;
     }
 
     #footerid {
@@ -238,4 +204,127 @@
     .touchControl {
         display: flex;
     }
+}
+
+@media only screen and (max-width: 768px) and (orientation: landscape) {
+
+    #canvas {
+        margin-top: 60px;
+        width: 54vw !important;
+    }
+
+    .ImgDiv {
+       display: none;
+    }
+
+    #footerid {
+        padding-bottom: 42px;
+        width: 600px;
+        border-radius: 16px;
+        margin: 8px;
+        height: 40px;
+        margin-top: 5px;
+        display: flex;
+        justify-content: end;
+        align-items: center;
+    }
+
+    .footerIcons {
+        background-color: sandybrown;
+        padding: 10px;
+        border-radius: 50%;
+        height: 25px;
+        width: 25px;
+        display: flex;
+        cursor: pointer;
+        border: 2px solid black;
+        box-shadow: 4px 4px 20px black;
+        display: flex;
+        justify-content: center;
+    }
+
+    .instruction {
+        margin-top: 0px;
+        display: none;
+        justify-content: space-around;
+        height: 248px;
+        width: 517px;
+        background-color: rgba(0, 0, 0, 0.8);
+        box-shadow: 4px 4px 20px black;
+        border-radius: 8px;
+        color: silver;
+    }
+
+    .startScreen {
+        padding-top: 70px;
+        height: 64vh;
+        width: 75vw;
+    }
+
+    .touchIcon {
+        height: 30px;
+        width: 26px;
+    }
+
+    .touchControl {
+
+        height: 200px;
+        display: none;
+        justify-content: space-around;
+        align-items: center;
+        flex-direction: column;
+        box-shadow: 4px 4px 20px sandybrown;
+        border-radius: 8px;
+        margin: 10px;
+        margin-top: 60px;
+        background-color: navajowhite;
+        padding: 8px;
+    }
+
+    .policy {
+        display: none;
+        justify-content: center;
+        font-family: "AbrilFatface-Regular";
+        font-size: 16px;
+        overflow-y: auto;
+        padding: 16px;
+        height: 208px;
+        width: 484px;
+        background-color: rgba(0, 0, 0, 0.8);
+        color: silver;
+    }
+
+    .startGameBtn {
+        font-family: 'ModernoEspanol';
+        color: #d27a07;
+        justify-content: center;
+        font-size: 27px;
+        width: 168px;
+        height: 34px;
+        margin-bottom: 60px;
+        background-color: black;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+    }
+
+    .gameOverScreen {
+        margin-top: 55px;
+        background-image: url(./img/img/youLoseIMG.png);
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        height: 285px;
+        width: 511px;
+        display: flex
+    ;
+        position: relative;
+        align-items: center;
+        justify-content: end;
+        flex-direction: column;
+        border: 2px solid black;
+        border-radius: 8px;
+        background-color: rgba(0, 0, 0, 0.3);
+    }
+
 }

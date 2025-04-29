@@ -83,28 +83,18 @@ class ThrowableObject extends MovableObject {
    * Triggers splash animation and logic when the bottle hits an enemy.
    */
   splash(enemy) {
-      // Prevent multiple splashes for the same enemy
-      if (this.collidedWith[enemy.id]) return;
-      this.collidedWith[enemy.id] = true;
+    if (this.collidedWith[enemy.id] || this.isSplashing) return;
 
-      // If already splashing, do nothing
-      if (this.isSplashing) return;
-      this.isSplashing = true;
+    this.collidedWith[enemy.id] = true;
+    this.isSplashing = true;
 
-      // Stop motion and animations
-      clearInterval(this.rotationInterval);
-      clearInterval(this.throwInterval);
-      this.speedY = 0;
-      this.speedX = 0;
-      this.acceleration = 0;
+    clearInterval(this.rotationInterval);
+    clearInterval(this.throwInterval);
+    this.speedY = this.speedX = this.acceleration = 0;
 
-      // Play splash animation and sound
-      this.playOnce(this.IMAGES_BOTTLE_SPLASH, 1800);
-      this.splash_sound.play();
+    this.playOnce(this.IMAGES_BOTTLE_SPLASH, 1800);
+    this.splash_sound.play();
 
-      // Mark object as ready for removal after splash
-      setTimeout(() => {
-          this.isSplicable = true;
-      }, this.IMAGES_BOTTLE_SPLASH.length * 100);
-  }
+    setTimeout(() => this.isSplicable = true, this.IMAGES_BOTTLE_SPLASH.length * 100);
+}
 }

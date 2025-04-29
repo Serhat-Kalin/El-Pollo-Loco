@@ -1,7 +1,7 @@
 class Chick extends MovableObject {
-    y = 390;
-    width = 50;
-    height = 50;
+    y = 395;
+    width = 40;
+    height = 40;
     health = 20;
     chick_sound = new Audio("audio/chick.mp3");
 

@@ -37,19 +37,10 @@ class Endbossbar extends DrawableObject {
     /**
      * Determines the image index to display based on current health percentage.
      */
-    resolveImageIndex() {
-        if (this.percentage == 100) {
-            return 5;
-        } else if (this.percentage >= 61) {
-            return 4;
-        } else if (this.percentage >= 41) {
-            return 3;
-        } else if (this.percentage >= 21) {
-            return 2;
-        } else if (this.percentage >= 1) {
-            return 1;
-        } else {
-            return 0;
-        }
-    }
+    setPercantage(percentage) {
+        this.percentage = percentage;
+        let index = resolveImageIndex(this.percentage); // 👈 Kein this.resolveImageIndex()
+        let path = this.IMAGES[index];
+        this.img = this.imageCache[path];
+      }
 }

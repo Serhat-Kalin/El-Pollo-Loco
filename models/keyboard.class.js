@@ -39,44 +39,23 @@ class Keyboard {
    * Requires buttons with IDs: leftbtn, rightbtn, jumpbtn, throwbtn.
    */
   mobileControl() {
-      document.getElementById('leftbtn').addEventListener('touchstart', (e) => {
-          e.preventDefault();
-          this.LEFT = true;
-      }, { passive: false });
+    this.addTouchControl('leftbtn', 'LEFT');
+    this.addTouchControl('rightbtn', 'RIGHT');
+    this.addTouchControl('jumpbtn', 'SPACE');
+    this.addTouchControl('throwbtn', 'D');
+}
 
-      document.getElementById('leftbtn').addEventListener('touchend', (e) => {
-          e.preventDefault();
-          this.LEFT = false;
-      }, { passive: false });
+addTouchControl(buttonId, keyName) {
+    const button = document.getElementById(buttonId);
 
-      document.getElementById('rightbtn').addEventListener('touchstart', (e) => {
-          e.preventDefault();
-          this.RIGHT = true;
-      }, { passive: false });
+    button.addEventListener('touchstart', (e) => {
+        e.preventDefault();
+        this[keyName] = true;
+    }, { passive: false });
 
-      document.getElementById('rightbtn').addEventListener('touchend', (e) => {
-          e.preventDefault();
-          this.RIGHT = false;
-      }, { passive: false });
-
-      document.getElementById('jumpbtn').addEventListener('touchstart', (e) => {
-          e.preventDefault();
-          this.SPACE = true;
-      }, { passive: false });
-
-      document.getElementById('jumpbtn').addEventListener('touchend', (e) => {
-          e.preventDefault();
-          this.SPACE = false;
-      }, { passive: false });
-
-      document.getElementById('throwbtn').addEventListener('touchstart', (e) => {
-          e.preventDefault();
-          this.D = true;
-      }, { passive: false });
-
-      document.getElementById('throwbtn').addEventListener('touchend', (e) => {
-          e.preventDefault();
-          this.D = false;
-      }, { passive: false });
-  }
+    button.addEventListener('touchend', (e) => {
+        e.preventDefault();
+        this[keyName] = false;
+    }, { passive: false });
+}
 }

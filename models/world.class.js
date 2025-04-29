@@ -125,7 +125,6 @@ class World {
               this.characterGetsHurt();
           }
       });
-
       this.level.enemies = this.level.enemies.filter(enemy => !enemy.isSplicable);
   }
 
@@ -182,38 +181,25 @@ class World {
    * Draws all visible elements in the game world.
    */
   draw() {
-      if (this.gameOver) return;
+    if (this.gameOver) return;
 
-      this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
-      this.ctx.translate(this.camera_x, 0);
+    this.ctx.translate(this.camera_x, 0);
+    this.addObjectsToMap(this.level.backgroundObjects);
+    this.addObjectsToMap(this.level.clouds);
+    this.ctx.translate(-this.camera_x, 0);
 
-      this.addObjectsToMap(this.level.backgroundObjects);
-      this.addObjectsToMap(this.level.clouds);
+    [this.statusBar, this.bottleBar, this.coinBar, this.endbossBar].forEach(obj => this.addToMap(obj));
 
-      this.ctx.translate(-this.camera_x, 0);
+    this.ctx.translate(this.camera_x, 0);
+    [this.character, ...this.level.coins, ...this.level.bottles, ...this.level.enemies, ...this.throwableObjects]
+        .forEach(obj => this.addToMap(obj));
+    this.ctx.translate(-this.camera_x, 0);
 
-      this.addToMap(this.statusBar);
-      this.addToMap(this.bottleBar);
-      this.addToMap(this.coinBar);
-      this.addToMap(this.endbossBar);
+    requestAnimationFrame(() => this.draw());
+}
 
-      this.ctx.translate(this.camera_x, 0);
-
-      this.addToMap(this.character);
-      this.addObjectsToMap(this.level.coins);
-      this.addObjectsToMap(this.level.bottles);
-      this.addObjectsToMap(this.level.enemies);
-      this.addObjectsToMap(this.throwableObjects);
-
-      this.ctx.translate(-this.camera_x, 0);
-
-      // Recursive draw loop
-      let self = this;
-      requestAnimationFrame(function () {
-          self.draw();
-      });
-  }
 
   /**
    * Adds multiple game objects to the canvas.

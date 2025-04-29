@@ -70,7 +70,7 @@ class Endboss extends MovableObject {
       this.x = 2600;
       this.id = "endboss";
       this.energy = 100;
-      this.speed = 6;
+      this.speed = 4;
       this.walkLeft();
       this.animate();
       this.isDead = false;

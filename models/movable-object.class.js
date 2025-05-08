@@ -17,13 +17,13 @@ class MovableObject extends DrawableObject {
    * Applies gravity to the object over time, simulating falling or jumping.
    */
   applyGravity() {
-      setInterval(() => {
-          if (this.isAboveGround() || this.speedY > 0) {
-              this.y -= this.speedY;
-              this.speedY -= this.acceleration;
-          }
-      }, 1000 / 25);
-  }
+    setInterval(() => {
+        if (this.isAboveGround() || this.speedY > 0) {
+            this.y -= this.speedY;
+            this.speedY -= this.acceleration;
+        }
+    }, 1000 / 25);
+}
 
   /**
    * Checks whether the object is above the ground level.

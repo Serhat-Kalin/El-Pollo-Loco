@@ -206,11 +206,36 @@ h3 {
     justify-content: space-around;
     align-items: center;
     flex-direction: column;
-    box-shadow: 4px 4px 20px sandybrown;
     border-radius: 8px;
     margin: 16px;
-    background-color: navajowhite;
     padding: 8px;
+}
+
+.leftControl {
+    position: absolute;
+    left: 0;
+    background: transparent;
+    box-shadow: none;
+    z-index: 1;
+}
+
+.rightControl {
+    position: absolute;
+    right: 0;
+    background: transparent;
+    box-shadow: none;
+    z-index: 1;
+}
+
+.touchDiv {
+    background-color: navajowhite;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 4px 4px 20px sandybrown;
 }
 
 .touchIcon {

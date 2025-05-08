@@ -24,12 +24,6 @@ class StatusBar extends DrawableObject {
   }
 
   /**
-   * Updates the health bar to reflect the given percentage of health.
-   * Loads the appropriate image based on current health.
-   */
-
-
-  /**
    * Resolves which image to show depending on the current percentage.
    */
   setPercantage(percentage) {

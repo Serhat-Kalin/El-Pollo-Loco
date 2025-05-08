@@ -1,16 +1,18 @@
 class Character extends MovableObject {
   world;
-  y = 100;
+  y = 190;
   height = 250;
   width = 140;
   speed = 8;
   isJumping = false;
   amountOfCoins = 0;
   amountOfBottle = 0;
+  lastActionTime = new Date().getTime();
   pepe_snore = new Audio("audio/snore.mp3");
   loosingsound = new Audio("audio/loosing.mp3");
   walking_sound = new Audio("audio/walking.mp3");
   jump_sound = new Audio("audio/jump.mp3");
+
 
 
   IMAGES_WALKING = [
@@ -140,11 +142,12 @@ class Character extends MovableObject {
    */
   handleMoveRight() {
     if (this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x) {
-        this.moveRight();
-        this.otherDirection = false;
-        this.walking_sound.play();
-        this.pepe_snore.pause();
-    }
+      this.moveRight();
+      this.otherDirection = false;
+      this.walking_sound.play();
+      this.pepe_snore.pause();
+      this.lastActionTime = new Date().getTime(); // <--- hinzufügen
+  }
 }
 
   /**
@@ -152,11 +155,12 @@ class Character extends MovableObject {
    */
   handleMoveLeft() {
     if (this.world.keyboard.LEFT && this.x > 0) {
-        this.moveLeft();
-        this.otherDirection = true;
-        this.walking_sound.play();
-        this.pepe_snore.pause();
-    }
+      this.moveLeft();
+      this.otherDirection = true;
+      this.walking_sound.play();
+      this.pepe_snore.pause();
+      this.lastActionTime = new Date().getTime(); // <--- hinzufügen
+  }
 }
 
   /**
@@ -234,7 +238,7 @@ class Character extends MovableObject {
   pepeIdleModus() {
     setInterval(() => {
         let timeSinceLastAction = new Date().getTime() - this.lastActionTime;
-        if (timeSinceLastAction > 3000) {
+        if (timeSinceLastAction > 500) {
             this.playAnimation(this.IMAGES_IDLE);
         }
     }, 400);
@@ -246,7 +250,7 @@ class Character extends MovableObject {
   pepeLongIdle() {
     setInterval(() => {
         let timeSinceLastAction = new Date().getTime() - this.lastActionTime;
-        if (timeSinceLastAction > 6000) {
+        if (timeSinceLastAction > 3000) {
             this.playAnimation(this.IMAGES_SLEEP);
             this.pepe_snore.play();
         }
@@ -283,7 +287,7 @@ class Character extends MovableObject {
         this.loosingsound.play();
         setTimeout(() => {
             gameOver();
-        }, 1500);
+        }, 2500);
     }
 }
 }

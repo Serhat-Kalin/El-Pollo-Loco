@@ -115,6 +115,7 @@
     .winningScreen {
         height: 64vh !important;
         width: 56vw;
+        margin-top: 60px;
     }
 
     h3 {
@@ -209,7 +210,7 @@
 @media only screen and (max-width: 768px) and (orientation: landscape) {
 
     #canvas {
-        margin-top: 60px;
+        /* margin-top: 60px; */
         width: 54vw !important;
     }
 
@@ -227,6 +228,7 @@
         display: flex;
         justify-content: end;
         align-items: center;
+        margin-top: 20px;
     }
 
     .footerIcons {
@@ -273,11 +275,9 @@
         justify-content: space-around;
         align-items: center;
         flex-direction: column;
-        box-shadow: 4px 4px 20px sandybrown;
         border-radius: 8px;
-        margin: 10px;
+        margin: 8px;
         margin-top: 60px;
-        background-color: navajowhite;
         padding: 8px;
     }
 

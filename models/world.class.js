@@ -274,13 +274,13 @@ class World {
    * Displays the win screen if the endboss is defeated.
    */
   winScreen() {
-      const endboss = this.level.enemies.find(enemy => enemy instanceof Endboss);
-      if (endboss && endboss.energy === 0) {
-          this.win_music.play();
+    const endboss = this.level.enemies.find(enemy => enemy instanceof Endboss);
+    if (endboss && endboss.energy === 0) {
+        this.win_music.play();
 
-          setTimeout(() => {
-              winScreen(); // This should point to a function to show the actual win UI
-          }, 1500);
-      }
-  }
+        setTimeout(() => {
+            showWinScreen(); // <-- hier auf UI bezogene Funktion aufrufen
+        }, 1500);
+    }
+}
 }

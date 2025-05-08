@@ -16,6 +16,10 @@ function toggleDisplay(elementId, show) {
  * - Pauses background music
  */
 function gameOver() {
+    if (document.fullscreenElement) {
+        document.exitFullscreen();
+    }
+
     toggleDisplay("canvas", false);
     toggleDisplay("gameover", true);
     clearAllIntervals();
@@ -39,12 +43,16 @@ function clearAllIntervals() {
  * - Hides the start screen
  * - Pauses background music
  */
-function winScreen() {
-    endGame();
+function showWinScreen() {
+    clearAllIntervals();
     toggleDisplay("canvas", false);
     toggleDisplay("win", true);
     toggleDisplay("startscreen", false);
     bg_music.pause();
+    
+    if (document.fullscreenElement) {
+        document.exitFullscreen();
+    }
 }
 
 /**
@@ -54,16 +62,51 @@ function winScreen() {
  * - Starts playing background music
  */
 function startGame() {
-    initLevel();
-    init();
+    if (window.innerWidth <= 1023) {
+        enterFullscreenMode();
+
+        setTimeout(() => {
+            startGameCore();
+        }, 100);
+    } else {
+        startGameCore();
+    }
+}
+
+function startGameCore() {
+    initLevel();  
+    init();     
+
     toggleDisplay("startscreen", false);
     toggleDisplay("canvas", true);
-    toggleDisplay("gameover", false);
-    toggleDisplay("instructionBtn", false);
-    toggleDisplay("policyid", false);
+
     bg_music.loop = true;
     bg_music.volume = 0.1;
     bg_music.play();
+}
+
+/**
+ * Enters fullscreen mode for the specified element and adjusts canvas dimensions.
+ * Returns a promise depending on the available fullscreen API.
+ */
+/**
+ * Enters fullscreen mode and sets canvas to full width/height.
+ * Returns a promise depending on supported API or rejects.
+ */
+function enterFullscreenMode() {
+    const fullscreenElement = document.getElementById('fullscreen');
+    const canvas = document.getElementById('canvas');
+
+    canvas.style.setProperty("width", "100vw", "important");
+    canvas.style.setProperty("height", "100dvh", "important");
+
+    if (fullscreenElement.requestFullscreen) {
+        fullscreenElement.requestFullscreen();
+    } else if (fullscreenElement.msRequestFullscreen) {
+        fullscreenElement.msRequestFullscreen(); // IE11
+    } else if (fullscreenElement.webkitRequestFullscreen) {
+        fullscreenElement.webkitRequestFullscreen(); // Safari
+    }
 }
 
 /**
